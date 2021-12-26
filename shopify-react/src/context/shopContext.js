@@ -40,9 +40,24 @@ export class ShopProvider extends Component {
     })
   }
 
-  addItemToCheckout = async () => {}
+  addItemToCheckout = async (variantId, quantity) => {
+    // customAttributes keyは、例えばcustom t-shirt等のprintするtextに使える
+    const lineItemsToAdd = [{ variantId, quantity: parseInt(quantity, 10) }]
+    const checkout = await client.checkout.addLineItems(
+      this.state.checkout.id,
+      lineItemsToAdd
+    )
+    this.setState({ checkout })
+    this.openCart()
+  }
 
-  removeLineItem = async (lineItemIdsToRemove) => {}
+  removeLineItem = async (lineItemIdsToRemove) => {
+    const checkout = await client.checkout.removeLineItems(
+      this.state.checkout.id,
+      lineItemIdsToRemove
+    )
+    this.setState({ checkout })
+  }
 
   fetchAllProducts = async () => {
     const products = await client.product.fetchAll()
