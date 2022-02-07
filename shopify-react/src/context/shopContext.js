@@ -86,7 +86,6 @@ export class ShopProvider extends Component {
   }
 
   render() {
-    console.log(this.state.checkout)
     return (
       <ShopContext.Provider
         value={{

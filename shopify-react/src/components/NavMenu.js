@@ -10,10 +10,6 @@ import {
   DrawerCloseButton,
   VStack,
   Text,
-  Grid,
-  Flex,
-  Image,
-  Box,
 } from '@chakra-ui/react'
 import { ShopContext } from '../context/shopContext'
 
